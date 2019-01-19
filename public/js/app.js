@@ -2239,12 +2239,68 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.$parent.fetchCalendars();
           }).catch(function (error) {
-            alert(response.data);
             /*this.announcementAddFailedMessage();*/
           });
         }
       });
-      this.$parent.addCalendar = false;
+      this.$parent.editCalendarDialog = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "RemoveCalendar",
+  props: {
+    calendarToRemove: {
+      type: Object
+    }
+  },
+  methods: {
+    remove: function remove() {
+      var _this = this;
+
+      this.$http.delete("/api/calendar/".concat(this.calendarToRemove.id, "/remove"), {
+        headers: {
+          "Authorization": "Bearer ".concat(this.$store.getters.currentUser.token)
+        }
+      }).then(function (response) {
+        _this.$store.commit("refreshToken", response.data.token);
+
+        _this.$parent.fetchCalendars();
+      }).catch(function (error) {
+        /*this.announcementAddFailedMessage();*/
+      });
+      this.$parent.removeCalendarDialog = false;
     }
   }
 });
@@ -2377,6 +2433,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Calendar_AddCalendar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Calendar/AddCalendar */ "./resources/js/components/Calendar/AddCalendar.vue");
 /* harmony import */ var _Calendar_EditCalendar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Calendar/EditCalendar */ "./resources/js/components/Calendar/EditCalendar.vue");
+/* harmony import */ var _Calendar_RemoveCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Calendar/RemoveCalendar */ "./resources/js/components/Calendar/RemoveCalendar.vue");
 //
 //
 //
@@ -2559,13 +2616,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NavigationDrawerItems",
   components: {
     AddCalendar: _Calendar_AddCalendar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    EditCalendar: _Calendar_EditCalendar__WEBPACK_IMPORTED_MODULE_1__["default"]
+    EditCalendar: _Calendar_EditCalendar__WEBPACK_IMPORTED_MODULE_1__["default"],
+    RemoveCalendar: _Calendar_RemoveCalendar__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   methods: {
     logout: function logout() {
@@ -2578,6 +2638,10 @@ __webpack_require__.r(__webpack_exports__);
     editCalendar: function editCalendar(calendar) {
       this.calendarToEdit = Object.assign({}, calendar);
       this.editCalendarDialog = true;
+    },
+    removeCalendar: function removeCalendar(calendar) {
+      this.calendarToRemove = Object.assign({}, calendar);
+      this.removeCalendarDialog = true;
     }
   },
   mounted: function mounted() {
@@ -2590,7 +2654,9 @@ __webpack_require__.r(__webpack_exports__);
       drawer: true,
       addCalendar: false,
       editCalendarDialog: false,
+      removeCalendarDialog: false,
       calendarToEdit: {},
+      calendarToRemove: {},
       adminRoutes: [{
         label: 'Panel',
         name: 'Panel',
@@ -13697,6 +13763,101 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      attrs: { "max-width": "500px" },
+      model: {
+        value: _vm.$parent.removeCalendarDialog,
+        callback: function($$v) {
+          _vm.$set(_vm.$parent, "removeCalendarDialog", $$v)
+        },
+        expression: "$parent.removeCalendarDialog"
+      }
+    },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-text",
+            [
+              _c("h1", { staticClass: "brown--text" }, [
+                _vm._v("Usuń Kalendarz")
+              ]),
+              _vm._v(" "),
+              _c("v-container", { attrs: { "grid-list-md": "" } }, [
+                _vm._v(
+                  "\n                Czy napewno chcesz usunąć kalendarz "
+                ),
+                _c("strong", [_vm._v(_vm._s(_vm.calendarToRemove.name))])
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "red darken-1", flat: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.remove()
+                    }
+                  }
+                },
+                [_vm._v("Usuń")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "darken-1", flat: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.$parent.removeCalendarDialog = false
+                    }
+                  }
+                },
+                [_vm._v("Anuluj")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HomePage/Home.vue?vue&type=template&id=82f08bf6&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HomePage/Home.vue?vue&type=template&id=82f08bf6& ***!
@@ -14207,7 +14368,11 @@ var render = function() {
                           "v-list-tile",
                           {
                             staticClass: "error--text",
-                            on: { click: function($event) {} }
+                            on: {
+                              click: function($event) {
+                                _vm.removeCalendar(calendar)
+                              }
+                            }
                           },
                           [
                             _c("v-list-tile-title", [_vm._v("Usuń kalendarz")]),
@@ -14398,6 +14563,12 @@ var render = function() {
       _vm.editCalendarDialog
         ? _c("edit-calendar", {
             attrs: { "calendar-to-edit": _vm.calendarToEdit }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.removeCalendarDialog
+        ? _c("remove-calendar", {
+            attrs: { "calendar-to-remove": _vm.calendarToRemove }
           })
         : _vm._e()
     ],
@@ -53660,6 +53831,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCalendar_vue_vue_type_template_id_56691cde_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCalendar_vue_vue_type_template_id_56691cde_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Calendar/RemoveCalendar.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Calendar/RemoveCalendar.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true& */ "./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true&");
+/* harmony import */ var _RemoveCalendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RemoveCalendar.vue?vue&type=script&lang=js& */ "./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RemoveCalendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "001380d8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Calendar/RemoveCalendar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RemoveCalendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RemoveCalendar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RemoveCalendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Calendar/RemoveCalendar.vue?vue&type=template&id=001380d8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RemoveCalendar_vue_vue_type_template_id_001380d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

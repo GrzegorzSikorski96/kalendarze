@@ -116,7 +116,7 @@
                     </v-list-tile>
 
 
-                    <v-list-tile @click="" class="error--text">
+                    <v-list-tile @click="removeCalendar(calendar)" class="error--text">
                         <v-list-tile-title>Usuń kalendarz</v-list-tile-title>
                         <v-list-tile-action>
                             <v-icon class="error--text">event_busy</v-icon>
@@ -177,18 +177,21 @@
 
         <add-calendar v-if="addCalendar"></add-calendar>
         <edit-calendar v-if="editCalendarDialog" :calendar-to-edit="calendarToEdit"></edit-calendar>
+        <remove-calendar v-if="removeCalendarDialog" :calendar-to-remove="calendarToRemove"></remove-calendar>
     </section>
 </template>
 
 <script>
     import AddCalendar from "../Calendar/AddCalendar";
     import EditCalendar from "../Calendar/EditCalendar";
+    import RemoveCalendar from "../Calendar/RemoveCalendar";
 
     export default {
         name: "NavigationDrawerItems",
         components: {
             AddCalendar,
-            EditCalendar
+            EditCalendar,
+            RemoveCalendar
         },
         methods: {
             logout() {
@@ -201,6 +204,10 @@
             editCalendar(calendar) {
                 this.calendarToEdit = Object.assign({}, calendar);
                 this.editCalendarDialog = true;
+            },
+            removeCalendar(calendar) {
+                this.calendarToRemove = Object.assign({}, calendar);
+                this.removeCalendarDialog = true;
             }
         },
         mounted() {
@@ -212,7 +219,9 @@
             drawer: true,
             addCalendar: false,
             editCalendarDialog: false,
+            removeCalendarDialog: false,
             calendarToEdit: {},
+            calendarToRemove: {},
             adminRoutes: [
                 {label: 'Panel', name: 'Panel', icon: 'dashboard'}
             ],

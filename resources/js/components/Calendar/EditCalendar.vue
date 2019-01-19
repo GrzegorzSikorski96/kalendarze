@@ -66,14 +66,14 @@
                             .then(response => {
                                 this.$store.commit("refreshToken", response.data.token);
                                 this.$parent.fetchCalendars();
+
                             })
                             .catch(error => {
-                                alert(response.data)
                                 /*this.announcementAddFailedMessage();*/
                             })
                     }
                 });
-                this.$parent.addCalendar = false;
+                this.$parent.editCalendarDialog = false;
             },
         }
     }
