@@ -2340,9 +2340,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   computed: {
-    welcome: function welcome() {
-      return this.$store.getters.welcome;
-    },
     quote: function quote() {
       return this.randomQuote();
     }
@@ -2820,7 +2817,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nh1 {\n    font-size: 2rem;\n}\n.author{\n    font-style: italic;\n}\n", ""]);
+exports.push([module.i, "\nh1 {\n    font-size: 2rem;\n}\n.author {\n    font-style: italic;\n}\n", ""]);
 
 // exports
 
