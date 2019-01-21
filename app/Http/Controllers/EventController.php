@@ -21,6 +21,20 @@ class EventController extends Controller
         $this->service = $service;
     }
 
+    public function all()
+    {
+        try {
+            $events = Event::all();
+        } catch (ModelNotFoundException $exception) {
+            return $this->response
+                ->notFound();
+        }
+
+        return $this->response
+            ->setData(['events' => $events])
+            ->success();
+    }
+
     public function create(Request $request): JsonResponse
     {
         try {

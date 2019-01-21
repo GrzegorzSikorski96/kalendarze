@@ -12,6 +12,10 @@ import VeeValidate, {Validator} from "vee-validate"
 import plValidation from "vee-validate/dist/locale/pl"
 import {initialize} from "./helpers/general";
 
+import 'fullcalendar/dist/fullcalendar.css'
+
+Vue.config.productionTip = false;
+
 Vue.use(Vuetify, {
     iconfont: "fa5"
 });

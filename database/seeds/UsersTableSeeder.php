@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('asdasd'),
             'remember_token' => str_random(10),
             'description' => str_random(150),
-            'role_id' => Role::all()->random(1)->first()->id,
+            'role_id' => Role::SUPERADMIN,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

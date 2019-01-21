@@ -18,9 +18,9 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->integer('calendar_id')->unsigned();
             $table->text('description')->nullable();
-            $table->date('start_date');
+            $table->date('start');
             $table->time('start_time');
-            $table->date('end_date');
+            $table->date('end');
             $table->time('end_time');
             $table->string('color');
             $table->integer('created_by')->unsigned();

@@ -4,6 +4,7 @@ import Login from "./components/Auth/Login";
 import HomePage from "./components/HomePage/HomePage";
 import Register from "./components/Auth/Register";
 import Panel from "./components/Panel/Panel";
+import Calendar from "./components/Calendar/Calendar";
 
 Vue.use(Router);
 
@@ -40,5 +41,10 @@ export default new Router({
                 forAdmins: true,
             }
         },
+        {
+            path: '/calendar/:id',
+            name: 'Calendar',
+            component: Calendar,
+        }
     ]
 })

@@ -29,6 +29,9 @@ Route::group([
     Route::post('/calendar/{id}/edit', 'CalendarController@edit');
     Route::delete('/calendar/{id}/remove', 'CalendarController@remove');
 
+
+    Route::get('/calendar/{id}/events', 'CalendarController@events');
+
     Route::post('/event/create', 'EventController@create');
     Route::post('/event/{id}/edit', 'EventController@edit');
     Route::delete('/event/{id}/remove', 'EventController@remove');

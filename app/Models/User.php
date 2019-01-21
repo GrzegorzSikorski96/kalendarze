@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use phpDocumentor\Reflection\Types\Boolean;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -39,6 +40,11 @@ class User extends Authenticatable implements JWTSubject
     public function calendars() : BelongsToMany
     {
         return $this->belongsToMany(Calendar::class, 'calendar_users', 'user_id', 'calendar_id');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role->id == Role::SUPERADMIN || $this->role->id == Role::ADMIN;
     }
 
     /**

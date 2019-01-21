@@ -101,6 +101,13 @@
                         <v-list-tile-title>{{ calendar.name }}</v-list-tile-title>
                     </v-list-tile>
 
+                    <v-list-tile :to="{name: 'Calendar', params: { id: calendar.id }}" @click="" color="warning">
+                        <v-list-tile-title>Wyświetl kalendarz</v-list-tile-title>
+                        <v-list-tile-action>
+                            <v-icon color="warning">event</v-icon>
+                        </v-list-tile-action>
+                    </v-list-tile>
+
                     <v-list-tile @click="" color="success">
                         <v-list-tile-title>Dodaj wydarzenie</v-list-tile-title>
                         <v-list-tile-action>
@@ -252,5 +259,9 @@
 <style scoped>
     .route {
         text-decoration: none;
+    }
+
+    .nav {
+        z-index: 5;
     }
 </style>
