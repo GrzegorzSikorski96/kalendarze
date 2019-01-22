@@ -72,7 +72,6 @@ export default new Vuex.Store({
         },
         updateCalendars(state, payload) {
             state.calendars = payload.data.calendars;
-            this.commit('refreshToken', payload.token);
         },
         refreshToken(state, payload) {
             state.currentUser.token = payload;
@@ -93,6 +92,7 @@ export default new Vuex.Store({
                 }
             }).then((response) => {
                 context.commit('updateCalendars', response.data);
+                this.commit('refreshToken', payload.token);
             });
         },
     }

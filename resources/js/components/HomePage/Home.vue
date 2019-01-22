@@ -2,7 +2,7 @@
     <v-container fill-height class="container">
         <v-layout align-center>
             <v-flex xs12 sm6 offset-sm3>
-                <v-card color="#e8e7c9">
+                <v-card color="#e8e7c9" elevation="10">
                     <v-card-text class="brown--text">
                         <h1>
                             {{ quote.text }}
@@ -45,7 +45,10 @@
                     text: "Na ważne rzeczy nie można \"Znajdować czasu\". Musi on być zarezerwowany w kalendarzu.",
                     author: "Timothy Ferriss"
                 },
-                {text: "Najpiękniejszych chwil w życiu nie zaplanujesz. One przyjdą same.", author: "Phil Bosmans"},
+                {
+                    text: "Najpiękniejszych chwil w życiu nie zaplanujesz. One przyjdą same.",
+                    author: "Phil Bosmans"
+                },
             ],
         }),
         methods: {

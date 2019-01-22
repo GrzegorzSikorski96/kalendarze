@@ -10,10 +10,10 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
-        "fullcalendar-scheduler": "^1.9.4",
         "himmas-vue-calendar": "^1.3.3",
         "validate.js": "^0.12.0",
         "vee-validate": "^2.1.5",
+        "vue-event-calendar": "^1.5.2",
         "vue-full-calendar": "^2.7.0",
         "vue-router": "^3.0.2",
         "vuetify": "^1.3.0",

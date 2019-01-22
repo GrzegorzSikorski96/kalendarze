@@ -260,8 +260,4 @@
     .route {
         text-decoration: none;
     }
-
-    .nav {
-        z-index: 5;
-    }
 </style>

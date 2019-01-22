@@ -30,12 +30,14 @@ Route::group([
     Route::delete('/calendar/{id}/remove', 'CalendarController@remove');
 
 
-    Route::get('/calendar/{id}/events', 'CalendarController@events');
+
 
     Route::post('/event/create', 'EventController@create');
     Route::post('/event/{id}/edit', 'EventController@edit');
     Route::delete('/event/{id}/remove', 'EventController@remove');
 });
+Route::get('/calendar/{id}/events', 'CalendarController@events');
+
 
 Route::get('/event/{id}', 'EventController@event');
 Route::get('/calendar/{id}', 'CalendarController@calendar');

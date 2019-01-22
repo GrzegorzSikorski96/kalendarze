@@ -107,13 +107,6 @@ class CalendarController extends Controller
             return $this->response->notFound();
         }
 
-        /*if(auth()->check && !auth()->user()->isAdmin()){
-            if($calendar->is_private && !$calendar->users()->find(auth()->id()) )
-            {
-                return $this->response->unauthorized();
-            }
-        }*/
-
         if ($calendar->is_private) {
                 if (auth()->check() && (auth()->user()->isAdmin() || $calendar->users()->find(auth()->id())) ) {
                     return $this->response

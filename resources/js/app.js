@@ -12,8 +12,16 @@ import VeeValidate, {Validator} from "vee-validate"
 import plValidation from "vee-validate/dist/locale/pl"
 import {initialize} from "./helpers/general";
 
-import 'fullcalendar/dist/fullcalendar.css'
+import 'vue-event-calendar/dist/style.css'
+import vueEventCalendar from 'vue-event-calendar'
 
+Vue.use(vueEventCalendar, {
+    locale: 'en',
+    color: '#ab8464',
+    weekStartOn: 1
+});
+
+Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify, {
@@ -27,7 +35,8 @@ Validator.localize({pl: plValidation});
 //window.axios = require('axios');
 
 Vue.prototype.$http = axios;
-axios.defaults.baseURL = "http://kalendarze.test/";
+
+
 //axios.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
 initialize(store, router);
 

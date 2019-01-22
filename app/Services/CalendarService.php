@@ -9,7 +9,7 @@ class CalendarService
 {
     public function create($data): Calendar
     {
-        $data['owner_id']= auth()->id();
+        $data['owner_id'] = auth()->id();
 
         $calendar = auth()->user()->calendars()->create($data);
 
@@ -31,6 +31,11 @@ class CalendarService
 
     public function events(Calendar $calendar)
     {
-        return $calendar->events->where('deleted_at', null)->all();
+
+        foreach ($calendar->events as $event) {
+                $event->date = Carbon::parse($event->date)->format('Y/m/d');
+        }
+
+        return $calendar->events->all();
     }
 }
