@@ -72,6 +72,7 @@ export default new Vuex.Store({
         },
         updateCalendars(state, payload) {
             state.calendars = payload.data.calendars;
+            this.commit('refreshToken', payload.token);
         },
         refreshToken(state, payload) {
             state.currentUser.token = payload;
@@ -85,14 +86,13 @@ export default new Vuex.Store({
         register(context) {
             context.commit("register");
         },
-        getCalendars(context) {
+        async getCalendars(context) {
             axios.get('/api/auth/calendars', {
                 headers: {
                     "Authorization": `Bearer ${context.state.currentUser.token}`
                 }
             }).then((response) => {
                 context.commit('updateCalendars', response.data);
-                this.commit('refreshToken', payload.token);
             });
         },
     }

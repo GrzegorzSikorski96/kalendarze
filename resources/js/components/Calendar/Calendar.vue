@@ -60,16 +60,16 @@
                         {{event}}
                     </div>
                 </template>-->
-            <template slot-scope="props">
-                <v-card v-for="(event, index) in props.showEvents" :key="index" class="event-item">
-                    <v-card-title>
-                        <div class="text-sm-left">
-                            <span class="grey--text ">{{ event.title }}</span><br>
-                            <span>{{ event.desc }}</span>
-                        </div>
-                    </v-card-title>
-                </v-card>
-            </template>
+                <template slot-scope="props">
+                    <v-card v-for="(event, index) in props.showEvents" :key="index" class="event-item">
+                        <v-card-title>
+                            <div class="text-sm-left">
+                                <span class="grey--text ">{{ event.title }}</span><br>
+                                <span>{{ event.desc }}</span>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </template>
 
 
             </vue-event-calendar>
@@ -86,25 +86,20 @@
             }
         },
         methods: {
-            fetchEvents() {
-                if(this.$store.getters.isLoggedIn) {
-                    axios.get(`/api/calendar/${this.$route.params.id}/events`, {
-                        headers: {
-                            "Authorization": `Bearer ${this.$store.getters.currentUser.token}`
-                        },
-                    }).then((response) => {
-                        this.$store.commit("refreshToken", response.data.token);
-                        this.events = response.data.data.events
-                    });
-                } else {
-                    axios.get(`/api/calendar/${this.$route.params.id}/events`).then((response) => {
-                        this.events = response.data.data.events
-                    });
-                }
+            async fetchEvents() {
+                axios.get(`/api/calendar/${this.$route.params.id}/events`, {
+                    headers: {
+                        "Authorization": `Bearer ${this.$store.getters.currentUser.token}`
+                    },
+                }).then((response) => {
+                    this.$store.commit("refreshToken", response.data.token);
+                    this.events = response.data.data.events
+                });
             },
             handleDayChanged(data) {
                 console.log('date-changed', data)
-            },
+            }
+            ,
             handleMonthChanged(data) {
                 console.log('month-changed', data)
             }
