@@ -33,20 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Event/RemoveEvent.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Calendar/Calendar.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
-              <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+              <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+              <folding>
+                <element signature="e#27#49#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,10 +110,10 @@
         <option value="$PROJECT_DIR$/resources/js/components/Event/AddEvent.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Calendar/AddCalendar.vue" />
         <option value="$PROJECT_DIR$/resources/js/store.js" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Event/EditEvent.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Event/RemoveEvent.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Calendar/Calendar.vue" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
       </list>
     </option>
   </component>
@@ -380,18 +374,18 @@
       <workItem from="1547910220388" duration="24911000" />
       <workItem from="1548065724569" duration="23785000" />
       <workItem from="1548143773774" duration="230000" />
-      <workItem from="1548144109656" duration="69755000" />
+      <workItem from="1548144109656" duration="70087000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121283000" />
+    <option name="totallyTimeSpent" value="121615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19669509" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19669509" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Command Line Tools Console" weight="0.3290461" />
@@ -405,7 +399,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.17684887" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.17684887" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.17577706" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.16291533" />
       <window_info anchor="bottom" id="TypeScript" order="12" weight="0.15219721" />
@@ -738,16 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="e#27#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Event/EditEvent.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -778,8 +762,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Calendar/Calendar.vue">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
-          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+          <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+          <folding>
+            <element signature="e#27#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
