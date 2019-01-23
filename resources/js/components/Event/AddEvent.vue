@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="$parent.addEvent" max-width="500px">
+    <v-dialog v-model="$parent.addEventDialog" max-width="500px">
         <v-card>
             <v-card-text>
                 <h1 class="brown--text">Dodaj Wydarzenie</h1>
@@ -10,7 +10,7 @@
                                 v-model="title"
                                 :error-messages="errors.collect('nazwa')"
                                 label="Nazwa"
-                                data-vv-name="nazwa"
+                                data-vv-name="title"
                                 required>
                         </v-text-field>
 
@@ -23,18 +23,32 @@
                                 required>
                         </v-text-field>
 
-                        <v-checkbox
-                                v-model="private"
-                                label="Prywatny"
-                        ></v-checkbox>
+                        <v-menu
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                lazy
+                                transition="scale-transition"
+                                offset-y
+                                full-width
+                                min-width="290px"
+                        >
+                            <v-text-field
+                                    slot="activator"
+                                    v-model="date"
+                                    label="Picker without buttons"
+                                    prepend-icon="event"
+                                    readonly
+                            ></v-text-field>
+                            <v-date-picker v-model="date"></v-date-picker>
+                        </v-menu>
                     </v-form>
                 </v-container>
             </v-card-text>
 
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="success darken-1" flat @click="create()">Zapisz</v-btn>
-                <v-btn color="red darken-1" flat @click="$parent.addCalendar = false">Anuluj</v-btn>
+                <v-btn color="success darken-1" flat @click="add()">Zapisz</v-btn>
+                <v-btn color="red darken-1" flat @click="$parent.addEventDialog = false">Anuluj</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -46,29 +60,30 @@
         data() {
             return {
                 dialog: true,
-                name: null,
+                title: null,
                 description: null,
-                private: true,
+                date: null,
             }
         },
+        props: {
+            calendar: {type: Object},
+        },
         methods: {
-            create() {
+            add() {
+
+                alert(this.calendar.id)
                 this.$validator.validate().then(result => {
                     if (result) {
                         let data = {
-                            name: this.name,
-                            description: this.description,
-                            is_private: this.private,
+                            title: this.title,
+                            desc: this.description,
+                            date: this.date,
                         };
 
-                        this.$http.post("/api/calendar/create", data, {
-                            headers: {
-                                "Authorization": `Bearer ${this.$store.getters.currentUser.token}`
-                            },
-                        })
+                        this.$http.post(`/api/calendar/${this.calendar.id}/event/create`, data)
                             .then(response => {
                                 this.$store.commit("refreshToken", response.data.token);
-                                this.$parent.fetchCalendars();
+                                this.$parent.fetchEvents();
                             })
                             .catch(error => {
                                 alert(response.data)

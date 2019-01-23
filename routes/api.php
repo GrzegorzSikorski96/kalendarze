@@ -32,7 +32,7 @@ Route::group([
 
 
 
-    Route::post('/event/create', 'EventController@create');
+    Route::post('/calendar/{id}/event/create', 'EventController@create');
     Route::post('/event/{id}/edit', 'EventController@edit');
     Route::delete('/event/{id}/remove', 'EventController@remove');
 });

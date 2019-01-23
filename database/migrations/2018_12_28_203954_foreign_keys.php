@@ -20,7 +20,6 @@ class ForeignKeys extends Migration
 
         Schema::table('events', function(Blueprint $table) {
             $table->foreign('calendar_id')->references('id')->on('calendars');
-            $table->foreign('created_by')->references('id')->on('users');
         });
 
         Schema::table('users', function(Blueprint $table) {
@@ -48,7 +47,6 @@ class ForeignKeys extends Migration
         });
 
         Schema::table('events', function(Blueprint $table) {
-            $table->dropForeign('events_created_by_foreign');
             $table->dropForeign('events_calendar_id_foreign');
         });
 

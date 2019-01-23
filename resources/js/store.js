@@ -2,6 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import {getLocalUser} from './helpers/auth';
 import axios from "axios";
+import {setAuthorization} from "./helpers/general";
 
 Vue.use(Vuex);
 
@@ -33,6 +34,11 @@ export default new Vuex.Store({
         },
         getCalendars(state) {
             return state.calendars;
+        },
+        getToken(state) {
+            if(state.currentUser) {
+                return state.currentUser.token
+            }
         }
     },
     mutations: {
@@ -77,7 +83,8 @@ export default new Vuex.Store({
         refreshToken(state, payload) {
             state.currentUser.token = payload;
             localStorage.setItem("user", JSON.stringify(state.currentUser));
-        }
+            setAuthorization(payload);
+        },
     },
     actions: {
         login(context) {
@@ -86,12 +93,9 @@ export default new Vuex.Store({
         register(context) {
             context.commit("register");
         },
-        async getCalendars(context) {
-            axios.get('/api/auth/calendars', {
-                headers: {
-                    "Authorization": `Bearer ${context.state.currentUser.token}`
-                }
-            }).then((response) => {
+        getCalendars(context) {
+            axios.get('/api/auth/calendars'
+            ).then((response) => {
                 context.commit('updateCalendars', response.data);
             });
         },

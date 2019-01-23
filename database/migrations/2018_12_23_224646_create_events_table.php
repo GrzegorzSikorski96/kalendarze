@@ -19,9 +19,6 @@ class CreateEventsTable extends Migration
             $table->integer('calendar_id')->unsigned();
             $table->text('desc')->nullable();
             $table->date('date');
-            $table->boolean('allDay')->default(false);
-            $table->string('color');
-            $table->integer('created_by')->unsigned();
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable()->default(null);
         });

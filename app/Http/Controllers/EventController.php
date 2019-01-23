@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ApiResponse;
+use App\Models\Calendar;
 use App\Models\Event;
 use App\Services\EventService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -35,11 +36,18 @@ class EventController extends Controller
             ->success();
     }
 
-    public function create(Request $request): JsonResponse
+    public function create(Request $request, $id): JsonResponse
     {
         try {
-            $event = $this->service->create($request->all());
+            $calendar = Calendar::findOrFail($id);
+        } catch (ModelNotFoundException $exception) {
+            return $this->response->notFound();
+        }
+
+        try {
+            $event = $this->service->create($request->all(), $calendar);
         } catch (QueryException $exception) {
+            dd($exception);
             return $this->response
                 ->setMessage('Error on creating event')
                 ->internalServerError();

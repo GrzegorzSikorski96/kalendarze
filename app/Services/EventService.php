@@ -2,17 +2,20 @@
 
 namespace App\Services;
 
+use App\Models\Calendar;
 use App\Models\Event;
 use Carbon\Carbon;
 
 class EventService
 {
-    public function create($data): Event
+    public function create($data, Calendar $calendar): Event
     {
+        $data['created_by'] = auth()->id();
+        $event = $calendar->events()->create($data);
+     /*
         $event = new Event();
-
         $event->fill($data);
-        $event->save();
+        $event->save();*/
 
         return $event;
     }

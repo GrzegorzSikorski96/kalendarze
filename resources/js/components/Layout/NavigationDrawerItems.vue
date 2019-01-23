@@ -108,7 +108,7 @@
                         </v-list-tile-action>
                     </v-list-tile>
 
-                    <v-list-tile @click="" color="success">
+                    <v-list-tile @click="addEvent(calendar)" color="success">
                         <v-list-tile-title>Dodaj wydarzenie</v-list-tile-title>
                         <v-list-tile-action>
                             <v-icon color="success">add</v-icon>
@@ -185,6 +185,7 @@
         <add-calendar v-if="addCalendar"></add-calendar>
         <edit-calendar v-if="editCalendarDialog" :calendar-to-edit="calendarToEdit"></edit-calendar>
         <remove-calendar v-if="removeCalendarDialog" :calendar-to-remove="calendarToRemove"></remove-calendar>
+        <add-event v-if="addEventDialog" :calendar="calendar"></add-event>
     </section>
 </template>
 
@@ -192,13 +193,15 @@
     import AddCalendar from "../Calendar/AddCalendar";
     import EditCalendar from "../Calendar/EditCalendar";
     import RemoveCalendar from "../Calendar/RemoveCalendar";
+    import AddEvent from "../Event/AddEvent";
 
     export default {
         name: "NavigationDrawerItems",
         components: {
             AddCalendar,
             EditCalendar,
-            RemoveCalendar
+            RemoveCalendar,
+            AddEvent
         },
         methods: {
             logout() {
@@ -207,6 +210,10 @@
             },
             fetchCalendars() {
                 this.$store.dispatch('getCalendars');
+            },
+            addEvent(calendar) {
+                this.calendar = Object.assign({}, calendar);
+                this.addEventDialog = true;
             },
             editCalendar(calendar) {
                 this.calendarToEdit = Object.assign({}, calendar);
@@ -224,6 +231,9 @@
         },
         data: () => ({
             drawer: true,
+            calendar: {},
+            addEventDialog: false,
+
             addCalendar: false,
             editCalendarDialog: false,
             removeCalendarDialog: false,

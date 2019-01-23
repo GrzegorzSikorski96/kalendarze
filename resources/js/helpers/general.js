@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 export function initialize(store, router) {
     router.beforeEach((to, from, next) => {
@@ -19,15 +19,23 @@ export function initialize(store, router) {
         } else next();
     });
 
-    Axios.interceptors.response.use(null, (error => {
-        if (error.response.status === 401) {
-            store.commit('logout');
-            router.push('/login');
+    axios.interceptors.response.use(null, (error => {
+        switch (error.response.status) {
+            case 401:
+            {
+                store.commit('logout');
+                router.push('/login');
+                break;
+            }
+            case 404:
+            {
+                router.push('/');
+            }
         }
     }));
 
     if (store.getters.currentUser) {
-        setAuthorization(store.getters.currentUser.token);
+        setAuthorization(store.getters.getToken);
     }
 }
 

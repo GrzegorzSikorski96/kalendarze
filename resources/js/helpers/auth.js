@@ -1,13 +1,15 @@
-window.axios = require('axios');
+import { setAuthorization } from "./general";
+import axios from "axios";
 
 export function login(credentials) {
     return new Promise((res, rej) => {
         axios.post('/api/auth/login', credentials)
             .then((response) => {
+                setAuthorization(response.data.token);
                 res(response.data);
             })
-            .catch((err) => {
-                rej('Błędny email lub hasło');
+            .catch((err) =>{
+                rej("Wrong email or password");
             })
     })
 }

@@ -14,14 +14,14 @@
                 <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             </toolbar>
             <v-content class="view" align-center fluid fill-height>
-                <v-layout fluid fill-height>
+                <v-container fluid fill-height>
                     <v-layout align-center justify-center>
                         <v-flex>
                             <router-view>
                             </router-view>
                         </v-flex>
                     </v-layout>
-                </v-layout>
+                </v-container>
             </v-content>
             <bottom></bottom>
         </v-app>
