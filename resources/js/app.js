@@ -15,6 +15,17 @@ import {initialize} from "./helpers/general";
 import 'vue-event-calendar/dist/style.css'
 import vueEventCalendar from 'vue-event-calendar'
 
+import Toasted from 'vue-toasted';
+import moment from 'moment';
+
+Vue.prototype.moment = moment;
+
+Vue.use(Toasted, {
+    theme: "bubble",
+    position: "top-center",
+    duration : 5000
+});
+
 Vue.use(vueEventCalendar, {
     locale: 'en',
     color: '#ab8464',
@@ -34,8 +45,8 @@ Validator.localize({pl: plValidation});
 //window.axios = require('axios');
 
 Vue.prototype.$http = axios;
-//axios.defaults.baseURL = "http://kalendarze.test/";
-axios.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
+axios.defaults.baseURL = "http://kalendarze.test/";
+//axios.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
 
 initialize(store, router);
 

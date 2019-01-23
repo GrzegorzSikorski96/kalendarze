@@ -91,45 +91,13 @@
                     </v-list-tile-action>
                 </v-list-tile>
 
-                <v-list-group
-                        sub-group
-                        no-action
-                        v-for="(calendar, i) in calendars"
-                        :key="i"
-                >
-                    <v-list-tile slot="activator">
-                        <v-list-tile-title>{{ calendar.name }}</v-list-tile-title>
-                    </v-list-tile>
-
-                    <v-list-tile :to="{name: 'Calendar', params: { id: calendar.id }}" @click="" color="warning">
-                        <v-list-tile-title>Wyświetl kalendarz</v-list-tile-title>
-                        <v-list-tile-action>
-                            <v-icon color="warning">event</v-icon>
-                        </v-list-tile-action>
-                    </v-list-tile>
-
-                    <v-list-tile @click="addEvent(calendar)" color="success">
-                        <v-list-tile-title>Dodaj wydarzenie</v-list-tile-title>
-                        <v-list-tile-action>
-                            <v-icon color="success">add</v-icon>
-                        </v-list-tile-action>
-                    </v-list-tile>
-
-                    <v-list-tile @click="editCalendar(calendar)" color="info">
-                        <v-list-tile-title>Edytuj kalendarz</v-list-tile-title>
-                        <v-list-tile-action>
-                            <v-icon color="info">create</v-icon>
-                        </v-list-tile-action>
-                    </v-list-tile>
-
-
-                    <v-list-tile @click="removeCalendar(calendar)" class="error--text">
-                        <v-list-tile-title>Usuń kalendarz</v-list-tile-title>
-                        <v-list-tile-action>
-                            <v-icon class="error--text">event_busy</v-icon>
-                        </v-list-tile-action>
-                    </v-list-tile>
-                </v-list-group>
+                <v-list-tile v-for="(calendar, i) in calendars"
+                             :key="i" :to="{name: 'Calendar', params: { id: calendar.id, targetCalendar: calendar}}">
+                    <v-list-tile-title>{{ calendar.name }}</v-list-tile-title>
+                    <v-list-tile-action>
+                        <v-icon>event_note</v-icon>
+                    </v-list-tile-action>
+                </v-list-tile>
             </v-list-group>
 
 
@@ -183,9 +151,7 @@
         </v-list>
 
         <add-calendar v-if="addCalendar"></add-calendar>
-        <edit-calendar v-if="editCalendarDialog" :calendar-to-edit="calendarToEdit"></edit-calendar>
-        <remove-calendar v-if="removeCalendarDialog" :calendar-to-remove="calendarToRemove"></remove-calendar>
-        <add-event v-if="addEventDialog" :calendar="calendar"></add-event>
+
     </section>
 </template>
 
@@ -211,18 +177,6 @@
             fetchCalendars() {
                 this.$store.dispatch('getCalendars');
             },
-            addEvent(calendar) {
-                this.calendar = Object.assign({}, calendar);
-                this.addEventDialog = true;
-            },
-            editCalendar(calendar) {
-                this.calendarToEdit = Object.assign({}, calendar);
-                this.editCalendarDialog = true;
-            },
-            removeCalendar(calendar) {
-                this.calendarToRemove = Object.assign({}, calendar);
-                this.removeCalendarDialog = true;
-            }
         },
         mounted() {
             if (this.currentUser) {
@@ -231,14 +185,8 @@
         },
         data: () => ({
             drawer: true,
-            calendar: {},
-            addEventDialog: false,
-
             addCalendar: false,
-            editCalendarDialog: false,
-            removeCalendarDialog: false,
-            calendarToEdit: {},
-            calendarToRemove: {},
+
             adminRoutes: [
                 {label: 'Panel', name: 'Panel', icon: 'dashboard'}
             ],

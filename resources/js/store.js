@@ -47,22 +47,35 @@ export default new Vuex.Store({
             state.auth_error = null;
         },
         loginSuccess(state, payload) {
+
+
             state.auth_error = null;
             state.isLoggedIn = true;
             state.loading = false;
             state.currentUser = Object.assign({}, payload.data.user, {token: payload.token});
 
             localStorage.setItem("user", JSON.stringify(state.currentUser));
+            Vue.toasted.show('Zalogowano', {
+                type: 'success'
+            });
         },
         loginFailed(state, payload) {
             state.loading = false;
             state.auth_error = payload.error;
+
+            Vue.toasted.show('Błąd podczas logowania', {
+                type: 'error'
+            });
         },
         logout(state) {
             localStorage.removeItem("user");
             state.isLoggedIn = false;
             state.currentUser = null;
             state.calendars = [];
+
+            Vue.toasted.show('Wylogowano', {
+                type: 'success'
+            });
         },
         register(state) {
             state.loading = true;
@@ -71,19 +84,29 @@ export default new Vuex.Store({
         registerFailed(state, payload) {
             state.loading = false;
             state.auth_error = payload.error;
+
+            Vue.toasted.show('Błąd podczas tworzneia konta', {
+                type: 'error'
+            });
         },
         registerSuccess(state, payload) {
             state.auth_error = null;
             state.loading = false;
+
+            Vue.toasted.show('Utworzono konto', {
+                type: 'success'
+            });
         },
         updateCalendars(state, payload) {
             state.calendars = payload.data.calendars;
             this.commit('refreshToken', payload.token);
         },
         refreshToken(state, payload) {
-            state.currentUser.token = payload;
-            localStorage.setItem("user", JSON.stringify(state.currentUser));
-            setAuthorization(payload);
+            if(state.currentUser) {
+                state.currentUser.token = payload;
+                localStorage.setItem("user", JSON.stringify(state.currentUser));
+                setAuthorization(payload);
+            }
         },
     },
     actions: {

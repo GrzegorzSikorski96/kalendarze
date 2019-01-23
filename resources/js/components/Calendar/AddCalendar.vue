@@ -41,11 +41,12 @@
 </template>
 
 <script>
+    import Vue from 'vue'
+
     export default {
         name: "AddCalendar",
         data() {
             return {
-                dialog: true,
                 name: null,
                 description: null,
                 private: true,
@@ -61,18 +62,20 @@
                             is_private: this.private,
                         };
 
-                        this.$http.post("/api/calendar/create", data, {
-                            headers: {
-                                "Authorization": `Bearer ${this.$store.getters.currentUser.token}`
-                            },
-                        })
+                        this.$http.post("/api/calendar/create", data)
                             .then(response => {
                                 this.$store.commit("refreshToken", response.data.token);
                                 this.$parent.fetchCalendars();
+
+
+                                Vue.toasted.show('Dodano kalendarz', {
+                                    type: 'success'
+                                });
                             })
                             .catch(error => {
-                                alert(response.data)
-                                /*this.announcementAddFailedMessage();*/
+                                Vue.toasted.show('Nie udało się dodać kalendarza', {
+                                    type: 'error'
+                                });
                             })
                     }
                 });

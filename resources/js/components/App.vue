@@ -6,7 +6,6 @@
                     v-model="drawer"
                     app
             >
-
                 <navigation-drawer-items fill-height></navigation-drawer-items>
             </v-navigation-drawer>
 

@@ -45,6 +45,7 @@ export default new Router({
             path: '/calendar/:id',
             name: 'Calendar',
             component: Calendar,
+            props: true
         }
     ]
 })

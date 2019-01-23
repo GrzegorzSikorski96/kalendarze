@@ -4,7 +4,7 @@
             <v-card-text>
                 <h1 class="brown--text">Dodaj Wydarzenie</h1>
                 <v-container grid-list-md>
-                    <v-form @keyup.native.enter="save()" class="form">
+                    <v-form @keyup.native.enter="add()" class="form">
                         <v-text-field
                                 v-validate.in="'required'"
                                 v-model="title"
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
     export default {
         name: "AddEvent",
         data() {
@@ -70,8 +72,6 @@
         },
         methods: {
             add() {
-
-                alert(this.calendar.id)
                 this.$validator.validate().then(result => {
                     if (result) {
                         let data = {
@@ -84,14 +84,20 @@
                             .then(response => {
                                 this.$store.commit("refreshToken", response.data.token);
                                 this.$parent.fetchEvents();
+
+
+                                Vue.toasted.show('Dodano wydarzenie', {
+                                    type: 'success'
+                                });
                             })
                             .catch(error => {
-                                alert(response.data)
-                                /*this.announcementAddFailedMessage();*/
+                                Vue.toasted.show('Nie udało się dodać wydarzenia', {
+                                    type: 'error'
+                                });
                             })
                     }
                 });
-                this.$parent.addCalendar = false;
+                this.$parent.addEventDialog = false;
             },
         },
     }

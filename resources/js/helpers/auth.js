@@ -9,7 +9,9 @@ export function login(credentials) {
                 res(response.data);
             })
             .catch((err) =>{
-                rej("Wrong email or password");
+                Vue.toasted.show('Błędny email lub hasło', {
+                    type: 'error'
+                });
             })
     })
 }
@@ -21,7 +23,9 @@ export function register(credentials) {
                 res(response.data);
             })
             .catch((err) => {
-                rej('Błędnnie uzupełniony formularz');
+                Vue.toasted.show('Nie udało się utworzyć konta', {
+                    type: 'error'
+                });
             })
     })
 }

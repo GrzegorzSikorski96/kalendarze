@@ -30,6 +30,7 @@ export function initialize(store, router) {
             case 404:
             {
                 router.push('/');
+                break;
             }
         }
     }));
