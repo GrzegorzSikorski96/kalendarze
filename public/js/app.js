@@ -74270,9 +74270,9 @@ vee_validate__WEBPACK_IMPORTED_MODULE_8__["Validator"].localize({
   pl: vee_validate_dist_locale_pl__WEBPACK_IMPORTED_MODULE_9___default.a
 }); //window.axios = require('axios');
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_3___default.a;
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://kalendarze.test/"; //axios.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_3___default.a; //axios.defaults.baseURL = "http://kalendarze.test/";
 
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
 Object(_helpers_general__WEBPACK_IMPORTED_MODULE_10__["initialize"])(_store__WEBPACK_IMPORTED_MODULE_5__["default"], _router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
