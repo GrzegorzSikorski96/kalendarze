@@ -25,12 +25,12 @@ Route::group([
     ],
 ], function () {
 
+
+    Route::get('/users', 'UserController@users');
+
     Route::post('/calendar/create', 'CalendarController@create');
     Route::post('/calendar/{id}/edit', 'CalendarController@edit');
     Route::delete('/calendar/{id}/remove', 'CalendarController@remove');
-
-
-
 
     Route::post('/calendar/{id}/event/create', 'EventController@create');
     Route::post('/event/{id}/edit', 'EventController@edit');

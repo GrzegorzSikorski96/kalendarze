@@ -35,7 +35,7 @@
                             <v-text-field
                                     slot="activator"
                                     v-model="date"
-                                    label="Picker without buttons"
+                                    label="Data wydarzenia"
                                     prepend-icon="event"
                                     readonly
                             ></v-text-field>
@@ -92,7 +92,7 @@
                 this.$parent.editCalendarDialog = false;
             },
         },
-        created(){
+        created() {
             this.date = this.moment(new Date(this.event.date)).toISOString().substr(0, 10)
         },
     }

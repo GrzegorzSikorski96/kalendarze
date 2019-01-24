@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ApiResponse;
+use App\Models\User;
 use ErrorException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -15,6 +16,19 @@ class UserController extends Controller
     public function __construct(ApiResponse $response)
     {
         $this->response = $response;
+    }
+
+    public function users(): JsonResponse
+    {
+        try {
+            $users = User::all();
+        } catch (ModelNotFoundException $exception) {
+            return $this->response->notFound();
+        }
+
+        return $this->response
+            ->setData(['users' => $users])
+            ->success();
     }
 
     public function calendars(): JsonResponse

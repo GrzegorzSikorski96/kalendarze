@@ -23,7 +23,7 @@ export function register(credentials) {
                 res(response.data);
             })
             .catch((err) => {
-                Vue.toasted.show('Nie udało się utworzyć konta', {
+                this.$toasted.show('Nie udało się utworzyć konta', {
                     type: 'error'
                 });
             })

@@ -35,7 +35,7 @@
                             <v-text-field
                                     slot="activator"
                                     v-model="date"
-                                    label="Picker without buttons"
+                                    label="Data wydarzenia"
                                     prepend-icon="event"
                                     readonly
                             ></v-text-field>

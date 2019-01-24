@@ -186,10 +186,6 @@
         data: () => ({
             drawer: true,
             addCalendar: false,
-
-            adminRoutes: [
-                {label: 'Panel', name: 'Panel', icon: 'dashboard'}
-            ],
             authRoutes: [],
             visitorRoutes: [
                 {label: 'Strona główna', name: 'HomePage', icon: 'home'},
