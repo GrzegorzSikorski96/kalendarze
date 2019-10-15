@@ -74272,7 +74272,7 @@ vee_validate__WEBPACK_IMPORTED_MODULE_8__["Validator"].localize({
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_3___default.a; //axios.defaults.baseURL = "http://kalendarze.test/";
 
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "https://kalendarze.sikorski.dev/";
 Object(_helpers_general__WEBPACK_IMPORTED_MODULE_10__["initialize"])(_store__WEBPACK_IMPORTED_MODULE_5__["default"], _router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
@@ -75746,8 +75746,8 @@ var user = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_2__["getLocalUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\Kalendarze\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\Kalendarze\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\PROGRAMY\laragon\www\kalendarze\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\PROGRAMY\laragon\www\kalendarze\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

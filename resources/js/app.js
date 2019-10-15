@@ -46,7 +46,7 @@ Validator.localize({pl: plValidation});
 
 Vue.prototype.$http = axios;
 //axios.defaults.baseURL = "http://kalendarze.test/";
-axios.defaults.baseURL = "http://kalendarze.gsikorski.cloud/";
+axios.defaults.baseURL = "https://kalendarze.sikorski.dev/";
 
 initialize(store, router);
 
